@@ -295,33 +295,6 @@ header .container{
   margin: auto;
 }
 
-/*           BACKGROUND HEADER       */
-
-.circle {
-  position: absolute;
-  z-index: -1;
-  bottom: 0;
-  width: .25rem;
-  aspect-ratio: 1/1;
-  background: var(--primary-clr-400);
-  border-radius: 50%;
-  animation: animate 10s linear forwards;
-}
-
-@keyframes animate {
-  0% {
-    transform: translatey(0);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: translatey(-100vh);
-    opacity: 1;
-  }
-}
-
 /* between section bar */
 
 .between-section-bar {
@@ -529,9 +502,168 @@ header .container{
 
 /* projects section */
 
+@media (min-width: 37.5em) {
+  .projects-section {
+    background-image: url("images/projetos/blue-bg-blur.png");
+    background-repeat: no-repeat;
+    background-position: center left;
+  }
+}
+
 .project__title {
   text-align: center;
 }
+
+.projects-container {
+  display: grid;
+  gap: 3rem;
+  margin-block: 3rem 7.5rem;
+}
+  
+.project {
+  position: relative;
+  display: block;
+  width: 80%;
+}
+
+@media (min-width: 37.5em){
+  .projects-container {
+    grid-template-areas: 
+    'max ...'
+    '... guia'
+    'bookmark ...'
+    '... vr';
+    gap: 5rem;
+  }
+
+  .project {
+    width: min(28.125rem, 100%);
+  }
+  
+  .project.max {
+    grid-area: max;
+  }
+  
+  .project.guia {
+    grid-area: guia;
+    margin-left: auto;
+  }
+  
+  .project.bookmark {
+    grid-area: bookmark;
+  }
+  
+  .project.vr {
+    grid-area: vr;
+    margin-left: auto;
+  }
+  
+}
+
+.project-image-wrapper {
+  background-image: linear-gradient(transparent, var(--primary-clr-900) 70%);
+  max-height: 17.5rem;
+  overflow-y: hidden;
+  transition: .35s;
+  position: relative;
+}
+
+.project-image-wrapper > img {
+  width: 100%;
+  position: relative;
+  z-index: -1;
+}
+
+.project-content-wrapper {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+}
+
+/* button */
+
+.projects-see-project__button {
+  width: 12rem;
+  height: auto;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.projects-see-project__button .circle {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: relative;
+  display: block;
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  background: var(--primary-clr-500);
+  border-radius: 1.625rem;
+}
+
+.projects-see-project__button .circle .icon {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: var(--neutral-clr-900);
+}
+
+.projects-see-project__button .circle .icon.arrow {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  left: 0.625rem;
+  width: 1.125rem;
+  height: 0.125rem;
+  background: none;
+}
+
+.projects-see-project__button .circle .icon.arrow::before {
+  position: absolute;
+  content: '';
+  top: -0.25rem;
+  right: 0.0625rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-top: 0.125rem solid var(--neutral-clr-100);
+  border-right: 0.125rem solid var(--neutral-clr-100);
+  transform: rotate(45deg);
+}
+
+.projects-see-project__button .see-project__button-text {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 0;
+  margin: 0 0 0 1.85rem;
+  color: var(--neutral-clr-100);
+  line-height: 1.6;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.project:hover .circle {
+  width: 100%;
+}
+
+.projects-see-project__button:hover .circle .icon.arrow {
+  background-color: var(--neutral-clr-100);
+  transform: translate(1rem, 0);
+}
+
+/* button end */
 
 /* skills section */
 
@@ -632,6 +764,18 @@ header .container{
 .purple-squares {
   right: -3%;
   bottom: -3%;
+}
+
+@media (min-width: 37.5em) {
+  .pink-squares {
+    left: -7%;
+    top: -7%;
+  }
+
+  .purple-squares {
+    right: -7%;
+    bottom: -7%;
+  }
 }
 
 .about-left-image-wrapper {
@@ -853,7 +997,7 @@ header .container{
 }
 
 .gradient-clr-400 {
-  background-image: linear-gradient(to right, var(--primary-clr-400), var(--primary-clr-500) 30%);
+  background-image: linear-gradient(to right, var(--primary-clr-400), var(--primary-clr-500) 75%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -877,10 +1021,6 @@ header .container{
 
 .fw-black {
   font-weight: var(--fw-black);
-}
-
-.fs-200 {
-  font-size: var(--fs-200);
 }
 
 .fs-300 {
