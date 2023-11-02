@@ -52,7 +52,7 @@ const lines = () => {
     let sizeW = Math.random() * 15;
     let duration = Math.random() * 3;
     let e = document.createElement("div");
-    e.setAttribute("class", "circle");
+    e.setAttribute("class", "header-circle");
     headerContainer.appendChild(e);
     e.style.width = 5 + sizeW + "px";
     e.style.left = Math.random() * +innerWidth + "px";
@@ -67,16 +67,38 @@ setInterval(() => {
     lines();
 }, 200);
 
-  /* skill section card effect */
+/* projects draggable slider */
 
-const updateCursor = ({ x, y }) => {
-    document.documentElement.style.setProperty('--x', x)
-    document.documentElement.style.setProperty('--y', y)
+const carousel = document.querySelector('.projects-container')
+
+let isDragging = false, startX, startScrollLeft
+
+const dragStart = (e) => {
+    isDragging = true
+    carousel.classList.add('dragging')
+    /* Records the initial cursor and scroll position of the carousel */
+    startX = e.pageX
+    startScrollLeft = carousel.scrollLeft
 }
 
-const skillSection = document.querySelector('.skills-section')
+const dragging = (e) => {
+    if(!isDragging) return /* if isDragging is false return from here */
+    /* updates the scroll position of the carousel based on the cursor movement */
+    carousel.scrollLeft = startScrollLeft - (e.pageX - startX)
+}
 
-skillSection.addEventListener('pointermove', updateCursor)
+const dragStop = () => {
+    isDragging = false
+    carousel.classList.remove('dragging')
+}
+
+carousel.addEventListener('mousedown', dragStart)
+
+carousel.addEventListener('mousemove', dragging)
+
+document.addEventListener('mouseup', dragStop)
+
+/* between bar section */
 
 const scrollers = document.querySelectorAll('.scroller')
 
@@ -100,3 +122,14 @@ function addAnimation() {
     })
 
 }
+
+/* skill section card effect */
+
+const updateCursor = ({ x, y }) => {
+  document.documentElement.style.setProperty('--x', x)
+  document.documentElement.style.setProperty('--y', y)
+}
+
+const skillSection = document.querySelector('.skills-section')
+
+skillSection.addEventListener('pointermove', updateCursor)

@@ -1,8 +1,7 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;/* 
-  outline: 1px solid greenyellow; */
+  box-sizing: border-box;
 }
 
 /* Remove default margin */
@@ -274,6 +273,7 @@ header .container{
 }
 
 .see-project__button a {
+  position: relative;
   display: flex;
   gap: 1.5rem;
   align-items: center;
@@ -282,17 +282,55 @@ header .container{
   border-radius: 0.313rem;
 }
 
+.see-project__button a::before {
+  content: "";
+  position: absolute;
+  inset: -.4rem;
+  z-index: -1;
+  background-image: linear-gradient(to right, var(--primary-clr-400), var(--primary-clr-500));
+  filter: blur(2rem);
+}
+
 .whatsapp__btn > a {
+  position: fixed;
+  bottom: 2rem;
+  right: 0;
   display: flex;
   width: 6.25rem;
   height: 6.25rem;
   background-color: var(--primary-clr-600);
   border-radius: 0.938rem 0 0rem 0.938rem;
   box-shadow: 0 0 0.75rem 0 rgba(66, 255, 0, 0.91);
+  z-index: 5;
 }
 
 .whatsapp__btn > a > img {
   margin: auto;
+}
+
+.header-circle {
+  position: absolute;
+  bottom: 0;
+  width: 1rem;
+  aspect-ratio: 1/1;
+  background: var(--primary-clr-400);
+  border-radius: 50%;
+  animation: animate 10s linear forwards;
+  z-index: -1;
+}
+
+@keyframes animate {
+  0% {
+    transform: translatey(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translatey(-100vh);
+    opacity: 1;
+  }
 }
 
 /* between section bar */
@@ -367,20 +405,6 @@ header .container{
 @media (min-width: 37.5em) {
   .tab-section {
     padding-block: 4rem;
-  }
-}
-
-.whatsapp__btn {
-  position: absolute;
-  right: 0;
-  top: 1.5rem;
-}
-
-@media (min-width: 37.5em) {
-  .whatsapp__btn {
-    position: absolute;
-    right: 0;
-    top: -10rem;
   }
 }
 
@@ -502,6 +526,10 @@ header .container{
 
 /* projects section */
 
+.projects-section {
+  padding-block: 3rem 6rem;
+}
+
 @media (min-width: 37.5em) {
   .projects-section {
     background-image: url("images/projetos/blue-bg-blur.png");
@@ -512,73 +540,70 @@ header .container{
 
 .project__title {
   text-align: center;
+  margin-bottom: 2rem;
 }
 
 .projects-container {
   display: grid;
-  gap: 3rem;
-  margin-block: 3rem 7.5rem;
+  grid-auto-flow: column;
+  grid-auto-columns: calc(100% - .75rem);
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: 0;
+  border-radius: 1rem;
 }
-  
-.project {
-  position: relative;
-  display: block;
-  width: 80%;
+
+.projects-container::-webkit-scrollbar {
+  display: none;
+}
+
+.projects-container.dragging {
+  scroll-behavior: auto;
+}
+
+.projects-container.dragging .project {
+  cursor: grab;
+  user-select: none;
 }
 
 @media (min-width: 37.5em){
   .projects-container {
-    grid-template-areas: 
-    'max ...'
-    '... guia'
-    'bookmark ...'
-    '... vr';
-    gap: 5rem;
+    grid-auto-columns: calc((100% / 2) - .75rem);
   }
+}
 
-  .project {
-    width: min(28.125rem, 100%);
+@media (min-width: 75em){
+  .projects-container {
+    grid-auto-columns: calc((100% / 2.5) - .75rem);
   }
-  
-  .project.max {
-    grid-area: max;
-  }
-  
-  .project.guia {
-    grid-area: guia;
-    margin-left: auto;
-  }
-  
-  .project.bookmark {
-    grid-area: bookmark;
-  }
-  
-  .project.vr {
-    grid-area: vr;
-    margin-left: auto;
-  }
-  
+}
+
+.project {
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  width: min(28.125rem, 100%);
+  margin-inline: auto;
 }
 
 .project-image-wrapper {
   background-image: linear-gradient(transparent, var(--primary-clr-900) 70%);
-  max-height: 17.5rem;
-  overflow-y: hidden;
+  max-height: 15rem;
+  border: .0000000001rem solid var(--primary-clr-900);
   transition: .35s;
   position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
 }
 
 .project-image-wrapper > img {
   width: 100%;
   position: relative;
   z-index: -1;
-}
-
-.project-content-wrapper {
-  position: absolute;
-  z-index: 1;
-  bottom: 0;
-  left: 0;
 }
 
 /* button */
@@ -768,13 +793,13 @@ header .container{
 
 @media (min-width: 37.5em) {
   .pink-squares {
-    left: -7%;
-    top: -7%;
+    left: -3.5%;
+    top: -3.5%;
   }
 
   .purple-squares {
-    right: -7%;
-    bottom: -7%;
+    right: -3.5%;
+    bottom: -3.5%;
   }
 }
 
@@ -862,7 +887,8 @@ header .container{
 .benefits-circle__img {
   position: absolute;
   z-index: -1;
-  width: min(37.5rem, 100%);
+  width: min(42rem, 100%);
+  margin-top: 3.5rem;
   animation: circle-anim 7.5s linear infinite;
 }
 
@@ -961,13 +987,23 @@ header .container{
 }
 
 .contract__button a {
+  position: relative;
   display: flex;
   gap: 1rem;
   align-items: center;
   padding: .75rem 2rem;
   background-image: linear-gradient(to right, var(--primary-clr-400), var(--primary-clr-500));
   border-radius: 0.313rem;
-} 
+}
+
+.contract__button a::before {
+  content: "";
+  position: absolute;
+  inset: -.25rem;
+  z-index: -1;
+  background-image: linear-gradient(to right, var(--primary-clr-400), var(--primary-clr-500));
+  filter: blur(2rem);
+}
 
 /* utility classes */
 
