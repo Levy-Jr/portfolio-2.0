@@ -102,6 +102,19 @@ body {
   color: var(--neutral-clr-100);
 }
 
+body::-webkit-scrollbar {
+  width: .75rem;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--primary-clr-400);
+  background-clip: content-box;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: var(--neutral-clr-900);
+}
+
 @media (max-width: 37.5em) {
   body[data-active-menu] {
     height: 100vh;
