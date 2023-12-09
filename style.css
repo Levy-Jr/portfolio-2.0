@@ -6,7 +6,7 @@
 
 /* Remove default margin */
 * {
-	padding: 0;
+  padding: 0;
   margin: 0;
 }
 
@@ -51,9 +51,9 @@ select {
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
-   scroll-behavior: auto;
+    scroll-behavior: auto;
   }
-  
+
   *,
   *::before,
   *::after {
@@ -65,26 +65,33 @@ select {
 }
 
 :root {
-	--primary-clr-400: #F33C94;
-	--primary-clr-500: #7873FA;
-	--primary-clr-600: #2AAC51;
+  --primary-clr-400: #F33C94;
+  --primary-clr-500: #7873FA;
+  --primary-clr-600: #2AAC51;
   --primary-clr-800: #181818;
   --primary-clr-900: #101010;
 
-	--neutral-clr-100: #ffffff;
+  --neutral-clr-100: #ffffff;
   --neutral-clr-200: #B0B0B0;
-	--neutral-clr-900: #000000;
+  --neutral-clr-900: #000000;
 
-	--ff-primary: 'Poppins', sans-serif;
-	--ff-secondary: 'Abhaya Libre', serif;
+  --ff-primary: 'Poppins', sans-serif;
+  --ff-secondary: 'Abhaya Libre', serif;
 
-  --fs-300: .875rem; /* 14px */
-  --fs-400: clamp(1rem, 4vw, 1.5rem); /* 24px */
-  --fs-500: clamp(1rem, 4vw, 1.75rem); /* 28px */
-  --fs-600: clamp(1.3rem, 4vw, 1.875rem); /* 30px */
-  --fs-700: clamp(1.4rem, 4vw, 2.25rem); /* 36px */
-  --fs-800: clamp(2rem, 5vw, 3.375rem); /* 54px */
-  --fs-900: clamp(1.75rem, 5vw, 3.625rem); /* 58px */
+  --fs-300: .875rem;
+  /* 14px */
+  --fs-400: clamp(1rem, 4vw, 1.5rem);
+  /* 24px */
+  --fs-500: clamp(1rem, 4vw, 1.75rem);
+  /* 28px */
+  --fs-600: clamp(1.3rem, 4vw, 1.875rem);
+  /* 30px */
+  --fs-700: clamp(1.4rem, 4vw, 2.25rem);
+  /* 36px */
+  --fs-800: clamp(2rem, 5vw, 3.375rem);
+  /* 54px */
+  --fs-900: clamp(1.75rem, 5vw, 3.625rem);
+  /* 58px */
 
   --fw-regular: 500;
   --fw-medium: 600;
@@ -140,7 +147,7 @@ header {
   overflow-x: hidden;
 }
 
-header .container{
+header .container {
   position: relative;
   min-height: 100vh;
 }
@@ -170,7 +177,7 @@ header .container{
   height: 30px;
 }
 
-@media (max-width: 37.5em){
+@media (max-width: 37.5em) {
   .mobile-nav-toggle[data-active-menu] {
     position: absolute;
     right: .15rem;
@@ -226,6 +233,10 @@ header .container{
   }
 
   .contact__button {
+    display: block;
+  }
+
+  .contact__button a {
     display: block;
     padding: .75rem 2rem;
     background-image: linear-gradient(to right, var(--primary-clr-400), var(--primary-clr-500));
@@ -304,7 +315,7 @@ header .container{
   filter: blur(2rem);
 }
 
-.whatsapp__btn > a {
+.whatsapp__btn>a {
   position: fixed;
   bottom: 2rem;
   right: 0;
@@ -317,7 +328,7 @@ header .container{
   z-index: 5;
 }
 
-.whatsapp__btn > a > img {
+.whatsapp__btn>a>img {
   margin: auto;
 }
 
@@ -337,9 +348,11 @@ header .container{
     transform: translatey(0);
     opacity: 0;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     transform: translatey(-100vh);
     opacity: 1;
@@ -361,19 +374,16 @@ header .container{
 
 .scroller[data-animated="true"] {
   overflow: hidden;
-  -webkit-mask: linear-gradient(
-    90deg,
-    transparent,
-    white 20%,
-    white 80%,
-    transparent
-  );
-  mask: linear-gradient(
-    90deg,
-    transparent,
-    white 20%,
-    white 80%,
-    transparent)
+  -webkit-mask: linear-gradient(90deg,
+      transparent,
+      white 20%,
+      white 80%,
+      transparent);
+  mask: linear-gradient(90deg,
+      transparent,
+      white 20%,
+      white 80%,
+      transparent)
 }
 
 @keyframes slide {
@@ -382,7 +392,7 @@ header .container{
   }
 }
 
-@media (min-width: 37.5em){
+@media (min-width: 37.5em) {
 
   @keyframes slide {
     to {
@@ -391,7 +401,7 @@ header .container{
   }
 }
 
-.scroller[data-animated="true"] .between-bar-slide{
+.scroller[data-animated="true"] .between-bar-slide {
   width: max-content;
   display: flex;
   align-items: center;
@@ -430,7 +440,7 @@ header .container{
   display: none;
 }
 
-@media (min-width: 37.5rem){
+@media (min-width: 37.5rem) {
   .tab-content {
     display: flex;
     flex-direction: row-reverse;
@@ -453,11 +463,11 @@ header .container{
     text-align: start;
   }
 
-  .tab-content > .tab-content-text-wrapper {
+  .tab-content>.tab-content-text-wrapper {
     width: 42%;
   }
 
-  .tab-content > .tab-content-btns {
+  .tab-content>.tab-content-btns {
     width: 40%;
   }
 }
@@ -475,7 +485,7 @@ header .container{
   margin-inline: auto;
 }
 
-.tab-panel-image-wrapper > img {
+.tab-panel-image-wrapper>img {
   width: 100%;
   margin-inline: auto;
 }
@@ -507,7 +517,7 @@ header .container{
   margin-top: 2.25rem;
 }
 
-.tab-content__btn > .tab-btn-icon-wrapper {
+.tab-content__btn>.tab-btn-icon-wrapper {
   display: flex;
 }
 
@@ -524,6 +534,7 @@ header .container{
   0% {
     transform: rotate(0);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -580,13 +591,13 @@ header .container{
   user-select: none;
 }
 
-@media (min-width: 37.5em){
+@media (min-width: 37.5em) {
   .projects-container {
     grid-auto-columns: calc((100% / 2) - .75rem);
   }
 }
 
-@media (min-width: 75em){
+@media (min-width: 75em) {
   .projects-container {
     grid-auto-columns: calc((100% / 2.5) - .75rem);
   }
@@ -613,7 +624,7 @@ header .container{
   margin-bottom: 1rem;
 }
 
-.project-image-wrapper > img {
+.project-image-wrapper>img {
   width: 100%;
   position: relative;
   z-index: -1;
@@ -787,7 +798,8 @@ header .container{
   position: relative;
 }
 
-.pink-squares, .purple-squares {
+.pink-squares,
+.purple-squares {
   position: absolute;
   width: 7.5%;
   height: 7.5%;
@@ -877,7 +889,7 @@ header .container{
     gap: 7.5rem;
   }
 
-  .about-wrapper > div {
+  .about-wrapper>div {
     width: 50%;
   }
 
@@ -1029,16 +1041,16 @@ header .container{
 }
 
 .visually-hidden {
-    position: absolute;
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    padding: 0 !important;
-    margin: -1px !important;
-    overflow: hidden !important;
-    clip: rect(0,0,0,0) !important;
-    white-space: nowrap !important;
-    border: 0 !important;
+  position: absolute;
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
 .ff-secondary {
