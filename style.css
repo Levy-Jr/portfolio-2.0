@@ -2,6 +2,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  outline: 1px solid greenyellow;
 }
 
 /* Remove default margin */
@@ -234,10 +235,6 @@ header .container {
 
   .contact__button {
     display: block;
-  }
-
-  .contact__button a {
-    display: block;
     padding: .75rem 2rem;
     background-image: linear-gradient(to right, var(--primary-clr-400), var(--primary-clr-500));
     border-radius: 0.313rem;
@@ -296,9 +293,9 @@ header .container {
   margin-block: 2rem 3rem;
 }
 
-.see-project__button a {
+.see-project__button {
   position: relative;
-  display: flex;
+  display: inline-flex;
   gap: 1.5rem;
   align-items: center;
   padding: 1rem 2.25rem;
@@ -306,7 +303,7 @@ header .container {
   border-radius: 0.313rem;
 }
 
-.see-project__button a::before {
+.see-project__button::before {
   content: "";
   position: absolute;
   inset: -.4rem;
@@ -315,7 +312,7 @@ header .container {
   filter: blur(2rem);
 }
 
-.whatsapp__btn>a {
+.whatsapp__btn {
   position: fixed;
   bottom: 2rem;
   right: 0;
@@ -328,7 +325,7 @@ header .container {
   z-index: 5;
 }
 
-.whatsapp__btn>a>img {
+.whatsapp__btn>img {
   margin: auto;
 }
 
@@ -575,7 +572,6 @@ header .container {
   overflow-x: auto;
   scroll-behavior: smooth;
   scrollbar-width: 0;
-  border-radius: 1rem;
 }
 
 .projects-container::-webkit-scrollbar {
@@ -1008,12 +1004,9 @@ header .container {
 }
 
 .contract__button {
-  margin-top: 1.5rem;
-}
-
-.contract__button a {
   position: relative;
   display: flex;
+  margin-top: 1.5rem;
   gap: 1rem;
   align-items: center;
   padding: .75rem 2rem;
@@ -1021,7 +1014,7 @@ header .container {
   border-radius: 0.313rem;
 }
 
-.contract__button a::before {
+.contract__button::before {
   content: "";
   position: absolute;
   inset: -.25rem;
@@ -1038,6 +1031,10 @@ header .container {
 
   width: min(var(--max-width), 100% - var(--padding) * 2);
   margin-inline: auto;
+}
+
+.block {
+  display: block;
 }
 
 .visually-hidden {
